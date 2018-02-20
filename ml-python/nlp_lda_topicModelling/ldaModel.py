@@ -1,3 +1,5 @@
+### Taken from https://media.readthedocs.org/pdf/gensim/stable/gensim.pdf
+
 import logging
 
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s',level=logging.INFO)
@@ -67,6 +69,14 @@ corpus = [dictionary.doc2bow(text) for text in texts]
 corpora.MmCorpus.serialize('/tmp/deerwester.mm', corpus) # store to disk, for later use
 print("----CORPUS----")
 print(corpus)
+
+
+
+###Corpus Streaming – One Document at a Time
+#Note that corpus above resides fully in memory, as a plain Python list. In this simple example, it doesn’t matter much, but just to make things clear, let’s assume there are millions of documents in the corpus. Storing all of them in RAM won’t do. Instead, let’s assume the documents are stored in a file on disk, one document per line. Gensim only requires that a corpus must be able to return one document vector at a time:
+
+
+
 
 
 
