@@ -27,3 +27,31 @@ table(Y)
 dat.prep <- (data.frame(Y=Y, as.data.frame(X)[,-1]))
 #dat.prep[["Y"]] <- as.factor(dat.prep[["Y"]])
 write.csv(dat.prep,file = "dat.prep.csv", row.names = FALSE)
+
+
+
+#-- Do logistic in R
+datf <- read.csv("dat.prep.csv", stringsAsFactors = FALSE)
+dim(datf)
+head(datf)
+library(caTools)
+model.reg    <- glm(Y ~ ., data = datf, family = binomial)
+summary(model.reg)
+predictTrain = predict(model.reg, newdata = datf, type = "response")
+#Train Accrracy
+tab <- table(datf$Y, predictTrain>= 0.5)
+tab
+sum(diag(tab))/sum(tab)
+
+
+
+library(ROCR)
+#Train
+ROCRpred = prediction(predictTrain, datf$Y)
+perf     = performance(ROCRpred, "tpr", "fpr")
+plot(perf)
+as.numeric(performance(ROCRpred, "auc")@y.values)
+
+
+#dropping last one with insignificat 
+summary(glm(Y ~ ., data = datf[,-5], family = binomial))
