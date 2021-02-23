@@ -105,8 +105,7 @@ from sklearn.feature_extraction.text import CountVectorizer
 
 
 # read the training data
-#df = pd.read_csv("/lxhome/singhjai/data/IMDB Dataset.csv")
-df = pd.read_csv("/lxhome/singhjai/data/IMDB Dataset.csv.zip")
+df = pd.read_csv("path/IMDB Dataset.csv.zip")
 
 # map postive to 1 and negative to 0
 df.sentiment = df.sentiment.apply(lambda x: 1 if x == "positive" else 0)
