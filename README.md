@@ -1,4 +1,3 @@
 # python_codes
 
-Added from mac
-Line from cloud
+Repository for python codes - which also includes ML apis of python world.
