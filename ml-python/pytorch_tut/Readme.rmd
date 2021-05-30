@@ -1,0 +1,8 @@
+All this tutorial is for my learning puposes.
+
+Since it is accissible - it is important that I state where I get it from and attribute it "python engineer"
+
+The original source is:
+https://www.youtube.com/playlist?list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4
+
+Refer to : https://www.python-engineer.com
