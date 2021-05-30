@@ -1,4 +1,4 @@
-All this tutorial is for my learning puposes.
+All this tutorial is for my learning purposes.
 
 Since it is accissible - it is important that I state where I get it from and attribute it to "python engineer": https://www.python-engineer.com
 
