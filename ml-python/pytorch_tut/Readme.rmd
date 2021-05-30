@@ -1,8 +1,11 @@
 All this tutorial is for my learning puposes.
 
-Since it is accissible - it is important that I state where I get it from and attribute it "python engineer"
+Since it is accissible - it is important that I state where I get it from and attribute it to "python engineer": https://www.python-engineer.com
 
 The original source is:
 https://www.youtube.com/playlist?list=PLqnslRFeH2UrcDBWF5mfPGpqQDSta6VK4
 
 Refer to : https://www.python-engineer.com
+
+
+I tried to play around and write my own on top of what "python engineer" describes in videos. For more reliable source, refer above.
