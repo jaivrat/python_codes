@@ -1,3 +1,3 @@
 # python_codes
 
-Repository for python codes - which also includes ML apis of python world.
+Repository for python codes - which also includes ML Apis of python world.
