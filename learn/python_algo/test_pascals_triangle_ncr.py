@@ -32,6 +32,33 @@ def solve(n):
     res = [x%(int(1e9)) for x in curr_row]
     return res
 
+# Pascals iterative
+
+def pascals_iterative(n, r):
+    # Write your code here
+    #terms = pascal_tr(n)
+    # return terms[r]%142857
+    if n==r:
+        return 1
+
+    if r == 0:
+        return 1
+    
+    tab = []
+    # 0 to n  - actual
+    for idx_n in range(0, n+1):
+        tab.append([0]*min(1,r))
+    
+    for r_idx in range(r):
+        tab[0][r_idx] = 1
+    for n_idx in range(0,n+1):
+        tab[n_idx][0] = 1
+        
+    for r_idx in range(r):
+        for n_idx in range(0,n+1):
+            tab[n_idx][r_idx] = tab[n_idx-1][r_idx-1] + tab[n_idx-1][r_idx]
+
+
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 

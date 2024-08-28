@@ -1,7 +1,7 @@
 import math
 
 def cumulative_normal(mu, sigma, xval):
-    return 0.5 * ( 1 + math.erf((xval-mu)/(math.sqrt(2) * sigma)))
+    return 0.5 * ( 1.0 + math.erf((xval-mu)/(math.sqrt(2) * sigma)))
     
         
 if __name__ == '__main__':
