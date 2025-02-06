@@ -145,9 +145,9 @@ res.fwd.filt$f[1] - f_1
 
 
 results.fwd.df <- data.frame(res.fwd.filt$m[-1, ] , 
-                             theta1 = theta1, 
-                             theta2 = theta2,
-                             tim = df$tim[-(1:500)])
+                             theta1 = theta1_s[start_row:length(theta1_s)], 
+                             theta2 = theta2_s[start_row:length(theta2_s)],
+                             tim = df$tim[start_row:nrow(df)])
 head(results.fwd.df)
 
 results.fwd.df.melt <- reshape2::melt(results.fwd.df, id.vars = "tim")     
@@ -157,26 +157,28 @@ ggplot(data = results.fwd.df.melt, aes(x = tim, y = value, group = variable, col
 
 
 #plot y's and predictions
-results.y.df  <- data.frame(tim = df$tim[-(1:500)], y = df$y[-(1:500)], pred = res.fwd.filt$f)
+results.y.df  <- data.frame(tim = df$tim[start_row:length(theta1_s)], 
+                            y = df$y[start_row:length(theta1_s)], 
+                            pred = res.fwd.filt$f)
 results.y.df.melt <- reshape2::melt(results.y.df, id.vars = "tim")     
 ggplot(data = results.y.df.melt, aes(x = tim, y = value, group = variable, colour = variable)) + 
   geom_line() + 
   ggtitle("ys")
 
 #Normality plot
-ggqqplot(res.fwd.filt$f - df$y[-(1:500)])
-plot(res.fwd.filt$f, df$y[-(1:500)])
+ggqqplot(df$y[start_row:length(theta1_s)]  - res.fwd.filt$f )
+plot(res.fwd.filt$f, df$y[start_row:length(theta1_s)])
 
 head(residuals(res.fwd.filt, type = "raw")$res)
-head(res.fwd.filt$f - df$y[-(1:500)])
+head(res.fwd.filt$f - df$y[start_row:length(theta1_s)])
 
 head(scale(residuals(res.fwd.filt, type = "raw")$res))
-head(scale(res.fwd.filt$f - df$y[-(1:500)]))
+head(scale(res.fwd.filt$f - df$y[start_row:length(theta1_s)]))
 
 head(residuals(res.fwd.filt, type = "standardized")$res)
-head((res.fwd.filt$f - df$y[-(1:500)])/sd(res.fwd.filt$f - df$y[-(1:500)]))
+head((res.fwd.filt$f - df$y[start_row:length(theta1_s)])/sd(res.fwd.filt$f - df$y[start_row:length(theta1_s)]))
 
-sd(res.fwd.filt$f - df$y[-(1:500)])
+sd(res.fwd.filt$f - df$y[start_row:length(theta1_s)])
 #residuals(res.fwd.filt)$sd
 with(res.fwd.filt, dlmSvd2var(U.R[[500]], D.R[500,]))
 
